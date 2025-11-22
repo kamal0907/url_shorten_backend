@@ -12,7 +12,7 @@ app.use(express.json());
 
 app.use(cors({origin: 'http://localhost:3000'}))
 
-app.get('/api/health', async (req,res) => {
+app.get('/healthz', async (req,res) => {
     return res.status(200).json({
         ok : true,
         version : '1.0'

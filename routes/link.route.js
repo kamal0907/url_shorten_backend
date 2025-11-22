@@ -10,7 +10,7 @@ import { getDefaultResultOrder } from 'dns';
 
 const CODE_REGEX = /^[A-Za-z0-9]{6,8}$/;
 
-router.post('/link', async (req, res) => {
+router.post('/links', async (req, res) => {
     try {
         const { targetUrl } = req.body;
 
@@ -51,7 +51,7 @@ router.post('/link', async (req, res) => {
     }
 })
 
-router.get('/link', async (req,res) => {
+router.get('/links', async (req,res) => {
     try {
         const result = await query ('SELECT code, target_url, clicks, last_clicked, created_at FROM links WHERE NOT deleted ORDER BY created_at DESC');
         return res.json(result.rows);
@@ -61,7 +61,7 @@ router.get('/link', async (req,res) => {
     }
 })
 
-router.get('/link/:code', async (req, res) => {
+router.get('/links/:code', async (req, res) => {
     try {
         const {code} = req.params;
 
@@ -77,7 +77,7 @@ router.get('/link/:code', async (req, res) => {
     }
 })
 
-router.delete('/link/:code', async (req, res) => {
+router.delete('/links/:code', async (req, res) => {
     try {
         const { code } = req.params;
 
